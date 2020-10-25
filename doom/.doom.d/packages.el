@@ -53,3 +53,6 @@
 (package! org-super-agenda :pin "3264255989021b8563ea42b5d26acbc2a024f14d")
 ;; Improve agenda/capture:1 ends here
 
+;; [[file:config.org::*Extra functionality][Extra functionality:7]]
+(package! org-roam-server :pin "1dc94e102d60e53bb9929b1cdc55d4d8c2b0d64f")
+;; Extra functionality:7 ends here
