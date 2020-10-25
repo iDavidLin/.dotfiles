@@ -48,3 +48,8 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+;; [[file:config.org::*Improve agenda/capture][Improve agenda/capture:1]]
+(package! org-super-agenda :pin "3264255989021b8563ea42b5d26acbc2a024f14d")
+;; Improve agenda/capture:1 ends here
+

@@ -35,10 +35,10 @@
 (with-eval-after-load 'org (setq org-agenda-files
                                   '("~/Dropbox/org/gtd")))
 
-    (setq org-journal-dir "~/Dropbox/org/journal/2020")
-    (setq org-journal-file-format "%Y-%m-%d")
-    (setq org-journal-date-prefix "#+TITLE: ")
-    (setq org-journal-date-format "%A, %B %d %Y")
+(setq org-journal-dir "~/Dropbox/org/journal/2020")
+(setq org-journal-file-format "%Y-%m-%d")
+(setq org-journal-date-prefix "#+TITLE: ")
+(setq org-journal-date-format "%A, %B %d %Y")
 
 
     (setq org-capture-templates '(("t" "Todo [inbox]" entry
@@ -47,8 +47,8 @@
                                   ("T" "Tickler" entry
                                    (file+headline "~/Dropbox/org/gtd/tickler.org" "Tickler")
                                    "* %i%? \n %U")))
-    (setq org-todo-keywords
-          '((sequence "TODO(t!)" "PROCESSING(p!)" "BLOCKED(b!)" "|" "DONE(d!)")))
+;;    (setq org-todo-keywords
+;;          '((sequence "TODO(t!)" "PROCESSING(p!)" "BLOCKED(b!)" "|" "DONE(d!)")))
 
     (setq org-refile-targets '(("~/Dropbox/org/gtd/todo.org" :maxlevel . 3)
                                ("~/Dropbox/org/gtd/someday.org" :level . 1)
@@ -59,6 +59,80 @@
 (setq display-line-numbers-type t)
 
 
+;; [[file:config.org::*Super agenda][Super agenda:1]]
+(use-package! org-super-agenda
+  :commands (org-super-agenda-mode))
+(after! org-agenda
+  (org-super-agenda-mode))
+
+(let ((org-super-agenda-groups
+       '((:auto-group t))))
+  (org-agenda-list))
+
+(setq org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-deadline-if-done t
+      org-agenda-include-deadlines t
+      org-agenda-block-separator nil
+      org-agenda-tags-column 100 ;; from testing this seems to be a good value
+      org-agenda-compact-blocks t)
+
+(setq org-agenda-custom-commands
+      '(("o" "Overview"
+         ((agenda "" ((org-agenda-span 'day)
+                      (org-super-agenda-groups
+                       '((:name "Today"
+                          :time-grid t
+                          :date today
+                          :todo "TODAY"
+                          :scheduled today
+                          :order 1)))))
+          (alltodo "" ((org-agenda-overriding-header "")
+                       (org-super-agenda-groups
+                        '((:name "Next to do"
+                           :todo "NEXT"
+                           :order 1)
+                          (:name "Important"
+                           :tag "Important"
+                           :priority "A"
+                           :order 6)
+                          (:name "Due Today"
+                           :deadline today
+                           :order 2)
+                          (:name "Due Soon"
+                           :deadline future
+                           :order 8)
+                          (:name "Overdue"
+                           :deadline past
+                           :face error
+                           :order 7)
+                          (:name "Assignments"
+                           :tag "Assignment"
+                           :order 10)
+                          (:name "Issues"
+                           :tag "Issue"
+                           :order 12)
+                          (:name "Emacs"
+                           :tag "Emacs"
+                           :order 13)
+                          (:name "Projects"
+                           :tag "Project"
+                           :order 14)
+                          (:name "Research"
+                           :tag "Research"
+                           :order 15)
+                          (:name "To read"
+                           :tag "Read"
+                           :order 30)
+                          (:name "Waiting"
+                           :todo "WAITING"
+                           :order 20)
+                          (:name "Trivial"
+                           :priority<= "E"
+                           :tag ("Trivial" "Unimportant")
+                           :todo ("SOMEDAY" )
+                           :order 90)
+                          (:discard (:tag ("Chore" "Routine" "Daily")))))))))))
+;; Super agenda:1 ends here
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
