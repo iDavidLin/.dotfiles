@@ -87,13 +87,6 @@ export PATH="$PATH:$VIMCONFIG/pack/bundle/start/fzf/bin"
 
 export FZF_DEFAULT_COMMAND="rg --files"
 
-
-if [ -f ~/.dotfiles/zsh/zshrc.zsh ]; then
-    source ~/.dotfiles/zsh/zshrc.zsh
-else
-    print "404: ~/.dotfiles/zsh/zshrc.zsh not found."
-fi
-
 export DOTFILES="$HOME/.dotfiles"
 
 # _source things
@@ -126,9 +119,6 @@ export FZF_DEFAULT_COMMAND="rg --files"
 # source fzf if has
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-
-# ssh agent
-eval "$(ssh-agent)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
