@@ -1,0 +1,5 @@
+# only stow init file
+/.config/nvim/config/*
+
+\.git
+\.gitignore
