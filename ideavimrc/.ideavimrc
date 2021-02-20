@@ -1,0 +1,70 @@
+let mapleader=" "
+
+set hlsearch
+set incsearch
+set scrolloff=2
+set smartcase
+set showmode
+set history=1000
+set surround " activate the vim-surround key bindings"
+
+" Home row beginning / end of line
+noremap <C-a> ^
+noremap <C-e> $
+
+" jump to end/begin of line in insert mode
+" inoremap <C-e> <C-o>$
+" inoremap <C-a> <C-o>0
+inoremap <C-e> <Esc>A
+inoremap <C-a> <Esc>I
+
+
+" Leader o/O to insert line below/above
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
+
+" Reload .ideavimrc
+nnoremap <leader>vs :source ~/.ideavimrc<CR>
+
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+
+nnoremap <leader>w :action CloseAllEditorsButActive<CR>
+nnoremap <leader>q :action CloseAllEditors<CR>
+nnoremap <leader>h :action HideSideWindows<CR>
+
+noremap <leader>mr :action ManageRecentProjects<CR>
+
+" Navigation
+nnoremap K :action GotoDeclaration<CR>
+nnoremap <leader>l :action GotoLine<CR>
+nnoremap <leader>jf :action FileStructurePopup<CR>
+nnoremap <leader>gt :action GotoTest<CR>
+
+" nnoremap <leader>e :action RecentFiles<CR>
+" nnoremap <leader>p :action GotoFile<CR>
+" nnoremap <leader>P :action GotoClass<CR>
+
+" Splitter and Navigate
+nnoremap <leader>sh :action VimWindowSplitHorizontal<CR>
+nnoremap <leader>sv :action VimWindowSplitVertical<CR>
+
+noremap <C-l> :action NextSplitter<CR>
+noremap <C-h> :action PrevSplitter<CR>
+
+" Error
+nnoremap <leader>ne :action GotoNextError<CR>
+nnoremap <leader>pe :action GotoPreviousError<CR>
+nnoremap <leader>ed :action ShowErrorDescription<CR>
+
+" debug
+nnoremap <leader>tb :action ToggleLineBreakpoint<CR>
+
+" Refactoring
+nnoremap <leader>fu :action FindUsages<CR>
+nnoremap <leader>ct :action GenerateTestMethod<CR>
+
+" Plugins
+nnoremap ; :action AceAction<CR>
+nnoremap <leader>fe :action Javascript.Linters.EsLint.Fix<CR>
+nnoremap <leader>te :action TsLintFileFixAction<CR>
+nnoremap <leader>rn :action RenameElement<CR>
