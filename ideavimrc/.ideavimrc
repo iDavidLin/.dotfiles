@@ -32,7 +32,8 @@ nnoremap <leader>w :action CloseAllEditorsButActive<CR>
 nnoremap <leader>q :action CloseAllEditors<CR>
 nnoremap <leader>h :action HideSideWindows<CR>
 
-noremap <leader>mr :action ManageRecentProjects<CR>
+noremap <leader>fr :action RecentChangedFiles<CR>
+noremap <leader>pp :action ManageRecentProjects<CR>
 
 " Navigation
 nnoremap K :action GotoDeclaration<CR>
