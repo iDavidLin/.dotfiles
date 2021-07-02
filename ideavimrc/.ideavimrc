@@ -46,8 +46,8 @@ nnoremap <leader>gt :action GotoTest<CR>
 " nnoremap <leader>P :action GotoClass<CR>
 
 " Splitter and Navigate
-nnoremap <leader>sh :action VimWindowSplitHorizontal<CR>
-nnoremap <leader>sv :action VimWindowSplitVertical<CR>
+nnoremap <leader>wh :action SplitHorizontally<CR>
+nnoremap <leader>wv :action SplitVertically<CR>
 
 noremap <C-l> :action NextSplitter<CR>
 noremap <C-h> :action PrevSplitter<CR>
