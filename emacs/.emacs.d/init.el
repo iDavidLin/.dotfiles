@@ -91,6 +91,13 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; Which key
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1))
+
 ;;(load-theme 'tango-dark)
 (use-package doom-themes
   :ensure t
