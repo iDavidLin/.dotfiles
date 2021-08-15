@@ -144,14 +144,15 @@
 ;; Add general and evil
 (use-package general
   :config
-  (general-create-definer rune/leader-keys
+  (general-create-definer david/leader-keys
     :keymaps '(normal insert visual emacs)
     :prefix "SPC"
     :global-prefix "C-SPC")
 
-  (rune/leader-keys
-    "t"  '(:ignore t :which-key "toggles")
-    "tt" '(counsel-load-theme :which-key "choose theme")))
+  (david/leader-keys
+   "f"  '(:ignore t :which-key "+files")
+   "ff"  '(counsel-find-file :which-key "Find Files")
+   "fr" '(counsel-recentf :which-key "Recent Files"))
 
 (use-package evil
   :init
@@ -173,6 +174,7 @@
 
 (use-package evil-collection
   :after evil
+  :ensure t
   :config
   (evil-collection-init))
 
@@ -184,7 +186,7 @@
   ("k" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
 
-(rune/leader-keys
+(david/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 ;; Add Peojectile
@@ -203,7 +205,7 @@
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
-(rune/leader-keys
+(david/leader-keys
   "p" '(projectile-command-map :which-key "Projectile Command Map"))
 
 ;; magit
@@ -220,8 +222,8 @@
   (variable-pitch-mode 1)
   (visual-line-mode 1))
 
-(rune/leader-keys
-  "g" '(magit-mode-map :which-key "Magit Command Map"))
+(david/leader-keys
+  "g" '(magit :which-key "Magit Status"))
 
 ;; Org Mode Configuration ------------------------------------------------------
 (defun dl/org-font-setup ()
@@ -253,7 +255,7 @@
 (use-package org
   :hook (org-mode . dl/org-mode-setup)
   :config
-  (setq org-ellipsis " ▾")
+  (setq org-ellipsis " ▾") ;; to replace the ...
   (dl/org-font-setup))
 
 (use-package org-bullets
@@ -275,3 +277,5 @@
 (with-eval-after-load 'org (setq org-agenda-files
                                   '("~/Dropbox/org/gtd")))
 
+(david/leader-keys
+  "a" 'org-agenda)
