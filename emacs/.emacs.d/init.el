@@ -269,3 +269,9 @@
 
 (use-package visual-fill-column
   :hook (org-mode . dl/org-mode-visual-fill))
+
+(setq org-directory "~/Dropbox/org/")
+
+(with-eval-after-load 'org (setq org-agenda-files
+                                  '("~/Dropbox/org/gtd")))
+
