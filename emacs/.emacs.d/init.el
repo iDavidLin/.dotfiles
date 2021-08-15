@@ -128,7 +128,9 @@
          ("C-x b" . counsel-ibuffer)
          ("C-x C-f" . counsel-find-file)
          :map minibuffer-local-map
-         ("C-r" . 'counsel-minibuffer-history)))
+         ("C-r" . 'counsel-minibuffer-history))
+  :config
+  (setq ivy-initial-inputs-alist nil)) ;; Don't start searches with ^
 
 ;; Add helpful
 (use-package helpful
@@ -152,7 +154,7 @@
   (david/leader-keys
    "f"  '(:ignore t :which-key "+files")
    "ff"  '(counsel-find-file :which-key "Find Files")
-   "fr" '(counsel-recentf :which-key "Recent Files"))
+   "fr" '(counsel-recentf :which-key "Recent Files")))
 
 (use-package evil
   :init
