@@ -5,6 +5,7 @@
 ;; Author: David <https://github.com/davidlin>
 ;; Maintainer: David <linyongxi7@gmail.com>
 ;; Created: August 14, 2021
+
 ;; Modified: August 14, 2021
 ;; Version: 0.0.1
 ;; Keywords: Symbol’s value as variable is void: finder-known-keywords
@@ -204,3 +205,16 @@
 
 (rune/leader-keys
   "p" '(projectile-command-map :which-key "Projectile Command Map"))
+
+;; magit
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+(use-package evil-magit
+  :after magit)
+
+;; NOTE: Make sure to configure a GitHub token before using this package!
+;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
+;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
+(use-package forge)
