@@ -1,0 +1,29 @@
+# .dotfiles
+
+* Stow
+
+I use [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles
+
+** Usage
+First clone the repo: git clone 
+`stow *`  to stow all the configs or specific: `stow zsh`
+
+*** Example
+Create symlinks for the emacs and tmux folders in the current dir into ~.
+
+#+begin_src
+`stow -v -t ~ emacs tmux`
+#+end_src
+
+-v verbose
+-t the target directory where symlinks should go: ~
+-D add this flag to remove the symlinks (unlink)
+
+* Git global ignore
+** Usage
+First stow git. You would have a file *.gitignore_global* under ~ folder.
+Then config Git to use the exclude file _.gitignore_global_ for all Git repositories
+
+#+begin_src bash
+  git config --global core.excludesfile ~/.gitignore_global
+#+end_src
