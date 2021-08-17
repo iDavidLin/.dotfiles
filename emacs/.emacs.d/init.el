@@ -22,8 +22,6 @@
 
 
 
-(provide 'init)
-;;; init.el ends here
 (setq inhibit-startup-message t)
 
 (scroll-bar-mode -1)    ; Disable visible scrollbar
@@ -52,11 +50,11 @@
 (unless (package-installed-p 'use-package)
    (package-install 'use-package))
 
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
@@ -81,6 +79,14 @@
   :config
   (ivy-mode 1))
 (ivy-mode 1)
+
+;; NOTE: The first time you load your configuration on a new machine, you'll
+;; need to run the following command interactively so that mode line icons
+;; display correctly:
+;;
+;; M-x all-the-icons-install-fonts
+
+(use-package all-the-icons)
 
 ;; Add modeline
 (use-package doom-modeline
@@ -118,10 +124,12 @@
   :config
   (setq which-key-idle-delay 0))
 
-;; Add ivy rich
 (use-package ivy-rich
   :init
+  :config
+  (setq ivy--display-transformers-alist nil)
   (ivy-rich-mode 1))
+
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
@@ -281,3 +289,40 @@
 
 (david/leader-keys
   "a" 'org-agenda)
+
+
+;; Org Mode Configuration ---------------------------------------
+(use-package org-roam
+      :ensure t
+      :custom
+      (org-roam-directory (file-truename "~/Dropbox/org/roam/"))
+      :bind (("C-c n l" . org-roam-buffer-toggle)
+             ("C-c n f" . org-roam-node-find)
+             ("C-c n g" . org-roam-graph)
+             ("C-c n i" . org-roam-node-insert)
+             ("C-c n c" . org-roam-capture)
+             ;; Dailies
+             ("C-c n j" . org-roam-dailies-capture-today))
+      :config
+      (org-roam-setup)
+      (org-roam-db-autosync-mode)
+      ;; If using org-roam-protocol
+      (require 'org-roam-protocol))
+
+(setq org-roam-v2-ack t)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ivy-mode t)
+ '(package-selected-packages
+   (quote
+    (all-the-icons-ivy all-the-icons-ivy-rich org-roam visual-fill-column org-bullets forge magit counsel-projectile projectile evil-collection evil general helpful ivy-rich which-key rainbow-delimiters doom-themes doom-modeline command-log-mode use-package smex ivy-hydra counsel))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
