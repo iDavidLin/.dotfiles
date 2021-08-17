@@ -1,0 +1,9 @@
+# only stow init file
+!init.el
+
+\.git
+\.gitignore
+
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+
