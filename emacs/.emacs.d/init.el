@@ -284,8 +284,20 @@
 
 (setq org-directory "~/Dropbox/org/")
 
+(setq org-agenda-start-with-log-mode t)
+(setq org-log-done 'time)
+(setq org-log-into-drawer t)
+
 (with-eval-after-load 'org (setq org-agenda-files
                                   '("~/Dropbox/org/gtd")))
+
+(setq org-refile-targets '(("~/Dropbox/org/gtd/todo.org" :maxlevel . 3)
+                           ("~/Dropbox/org/gtd/someday.org" :level . 1)
+                           ("~/Dropbox/org/gtd/tickler.org" :maxlevel . 2)))
+
+;; Save Org buffers after refiling!
+(advice-add 'org-refile :after 'org-save-all-org-buffers)
+
 
 (david/leader-keys
   "a" 'org-agenda)
