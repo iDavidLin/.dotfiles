@@ -54,6 +54,5 @@
 ;; Improve agenda/capture:1 ends here
 
 ;; [[file:config.org::*Extra functionality][Extra functionality:7]]
-(package! org-roam-server)
 ;; Extra functionality:7 ends here
 (package! evil-surround)

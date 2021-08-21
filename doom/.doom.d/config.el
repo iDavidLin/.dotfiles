@@ -136,20 +136,24 @@
 
 ;; org-roam
 (use-package org-roam
-      :ensure t
-      :hook
-      (after-init . org-roam-mode)
-      :custom
-      (org-roam-directory "~/Dropbox/org/roam/")
-      :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))))
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/Dropbox/org/roam/"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+;;  :config
+;;  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+;;  (require 'org-roam-protocol)          ;
+  )
 
-
+;; (setq org-roam-v2-ack t)
+;; (setq org-roam-list-files-commands nil)
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
