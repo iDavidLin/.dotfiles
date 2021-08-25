@@ -181,14 +181,15 @@
          ("C-c n c" . org-roam-capture)
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
-;;  :config
-;;  (org-roam-db-autosync-mode)
+ ;; :config
+  ;; (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
 ;;  (require 'org-roam-protocol)          ;
   )
 
-;; (setq org-roam-v2-ack t)
+(setq org-roam-v2-ack t)
 ;; (setq org-roam-list-files-commands nil)
+;;
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
