@@ -117,8 +117,13 @@ export PATH="$PATH:$VIMCONFIG/pack/bundle/start/fzf/bin"
 export FZF_DEFAULT_COMMAND="rg --files"
 # export FZF_DEFAULT_OPTS="--layout=default --preview '(highlight -O ansi {} || cat {}) 2> /dev/null'"
 # source fzf if has
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -143,5 +148,8 @@ export FZF_DEFAULT_COMMAND="rg --files"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source /usr/share/autojump/autojump.zsh
+# source /usr/share/autojump/autojump.zsh
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
 if [ -e /home/david/.nix-profile/etc/profile.d/nix.sh ]; then . /home/david/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e /Users/david.lin/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/david.lin/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
