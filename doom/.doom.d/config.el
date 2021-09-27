@@ -168,6 +168,8 @@
 ;;  (require 'org-roam-protocol)          ;
   )
 
+;; replace isearch with swiper
+(global-set-key (kbd "C-s") 'swiper)
 ;; (setq org-roam-v2-ack t)
 ;; (setq org-roam-list-files-commands nil)
 ;; Here are some additional functions/macros that could help you configure Doom:
