@@ -2,11 +2,11 @@
 
 * Stow
 
-I use [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles
+I use [[https://www.gnu.org/software/stow/][GNU Stow]] to manage my dotfiles
 
 ** Usage
-First clone the repo: git clone 
-`stow *`  to stow all the configs or specific: `stow zsh`
+- First clone the repo
+- =stow *=  to stow all the configs or specific: =stow zsh=
 
 *** Example
 Create symlinks for the emacs and tmux folders in the current dir into ~.
