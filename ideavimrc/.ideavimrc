@@ -34,16 +34,13 @@ nnoremap <leader>h :action HideSideWindows<CR>
 
 noremap <leader>fr :action RecentChangedFiles<CR>
 noremap <leader>pp :action ManageRecentProjects<CR>
+noremap <leader>pf :action GotoFile<CR>
 
 " Navigation
 nnoremap K :action GotoDeclaration<CR>
 nnoremap <leader>l :action GotoLine<CR>
 nnoremap <leader>jf :action FileStructurePopup<CR>
 nnoremap <leader>gt :action GotoTest<CR>
-
-" nnoremap <leader>e :action RecentFiles<CR>
-" nnoremap <leader>p :action GotoFile<CR>
-" nnoremap <leader>P :action GotoClass<CR>
 
 " Splitter and Navigate
 nnoremap <leader>wh :action SplitHorizontally<CR>
