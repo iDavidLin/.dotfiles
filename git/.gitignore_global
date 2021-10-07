@@ -50,3 +50,9 @@ flycheck_*.el
 
 # Mac OS
 .DS_Store
+
+# Jetbrains
+.idea
+
+# IntelliJ
+out/
