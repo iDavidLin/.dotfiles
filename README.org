@@ -86,7 +86,18 @@ command -v fish | sudo tee -a /etc/shells
 #+begin_src bash
 chsh -s (which fish)
 #+end_src
+*** Integrate with iterm2
+#+begin_src bash
+curl -L https://iterm2.com/shell_integration/fish \
+-o ~/.iterm2_shell_integration.fish
+#+end_src
 
+Next, you need to load the script at login time. Add this to the end of ~/.config/fish/config.fish:
+
+#+begin_src bash
+source ~/.iterm2_shell_integration.fish
+#+end_src
+Check [[https://iterm2.com/documentation-shell-integration.html][Shell Integration]] for more.
 ** tmux
 [[https://github.com/tmux/tmux][tmux]] is a terminal multiplexer: it enables a number of terminals to be created, accessed, and controlled from a single screen. tmux may be detached from a screen and continue running in the background, then later reattached.
 
