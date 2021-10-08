@@ -1,13 +1,13 @@
 # .dotfiles
 
-* Stow
+* David's dotfiles
+** Stow
 I use [[https://www.gnu.org/software/stow/][GNU Stow]] to manage my dotfiles
 
 #+begin_quote
 GNU Stow is a symlink farm manager which takes distinct packages of software and/or data located in separate directories on the filesystem, and makes them appear to be installed in the same place.
 #+end_quote
 
-** Usage
 *** Apply all the config
 #+begin_src bash
 brew install stow
@@ -40,28 +40,45 @@ Then config Git to use the exclude file _.gitignore_global_ for all Git reposito
 #+begin_src bash
   git config --global core.excludesfile ~/.gitignore_global
 #+end_src
-* iterm2 + fish + tmux
-** iTerm2
+** brew
+*** Install brew
+[[https://brew.sh/][Homebrew]] is a package manager for macOS.
+Install script:
+#+begin_src bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#+end_src
+
+*** Install bundle
+First stow brew, and then install all the brew bundle from Brewfile
+#+begin_src bash
+cd ~/.dotfiles
+stow brew
+cd ~
+brew bundle install
+#+end_src
+
+** iterm2 + fish + tmux
+*** iTerm2
 iTerm2 is a replacement for Terminal and the successor to iTerm. It works on Macs with macOS 10.14 or newer. iTerm2 brings the terminal into the modern age with features you never knew you always wanted.
 [[https://iterm2.com/][iterm2 Office Page]]
-*** Install
+**** Install
 #+begin_src bash
 brew install --cask iterm2
 #+end_src
-*** iTerm2 Color Scheme: Dracula
+**** iTerm2 Color Scheme: Dracula
 I am using [[https://draculatheme.com/][Dracula]] theme almost all my tools.
 
-**** Install using Git
+***** Install using Git
 #+begin_src bash
 git clone https://github.com/dracula/iterm.git
 #+end_src
-**** Activating theme
+***** Activating theme
 1. iTerm2 > Preferences > Profiles > Colors Tab
 2. Open the Color Presets... drop-down in the bottom right corner
 3. Select Import... from the list
 4. Select the Dracula.itermcolors file
 5. Select the Dracula from Color Presets...
-*** iTerm 2 Nerd Fonts
+**** iTerm 2 Nerd Fonts
 There is a project called [[https://github.com/ryanoasis/nerd-fonts][Nerd Fonts.]] Nerd Fonts is a project that patches developer targeted fonts with a high number of glyphs (icons). Specifically, to add a high number of extra glyphs from popular ‘iconic fonts’ such as Font Awesome, Devicons, Octicons, and others.
 
 I am using one of their fonts to render the theme that uses ligatures from there. So you need to download the font, install it in the Font Book and apply in your terminal emulator [iTerm2].
@@ -71,22 +88,22 @@ Download [[https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Jet
 #+attr_html: :width 800px;
 [[file:./img/iterm-fonts.png]]
 
-** fish shell
+*** fish shell
 [[https://fishshell.com/][fish]] is a smart and user-friendly command line shell for Linux, macOS, and the rest of the family.
 
-*** Install fish with homebrew
+**** Install fish with homebrew
 #+begin_src bash
 brew install fish
 #+end_src
-*** Change the default shell without adding it to the list of known shells:
+**** Change the default shell without adding it to the list of known shells:
 #+begin_src bash
 command -v fish | sudo tee -a /etc/shells
 #+end_src
-*** Change the default shell to Fish Shell
+**** Change the default shell to Fish Shell
 #+begin_src bash
 chsh -s (which fish)
 #+end_src
-*** Integrate with iterm2
+**** Integrate with iterm2
 #+begin_src bash
 curl -L https://iterm2.com/shell_integration/fish \
 -o ~/.iterm2_shell_integration.fish
@@ -98,15 +115,21 @@ Next, you need to load the script at login time. Add this to the end of ~/.confi
 source ~/.iterm2_shell_integration.fish
 #+end_src
 Check [[https://iterm2.com/documentation-shell-integration.html][Shell Integration]] for more.
-** tmux
+**** Install fish theme
+I am using [[https://github.com/jorgebucaran/fisher][Fisher]] as my plugin manager. Install fish theme [[https://draculatheme.com/fish][dracula]]
+
+#+begin_src bash
+fisher install dracula/fish
+#+end_src
+*** tmux
 [[https://github.com/tmux/tmux][tmux]] is a terminal multiplexer: it enables a number of terminals to be created, accessed, and controlled from a single screen. tmux may be detached from a screen and continue running in the background, then later reattached.
 
-*** Install tmux
+**** Install tmux
 #+begin_src bash
 brew install tmux
 #+end_src
 
-*** Install tmp (Tmux Plugin Manager)
+**** Install tmp (Tmux Plugin Manager)
 Requirements: =tmux= version 1.9 (or higher), =git=, =bash=.
 #+begin_src bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -138,10 +161,10 @@ $ tmux source ~/.tmux.conf
 
 more details: [[https://github.com/tmux-plugins/tpm][tpm]]
 
-*** Install Dracula tmux theme
+**** Install Dracula tmux theme
 Install [[https://draculatheme.com/tmux][Dracula tmux theme]] using tpm
 #+begin_src bash
 set -g @plugin 'dracula/tmux'
 #+end_src
-* font
+** font
 I am using [[https://www.jetbrains.com/lp/mono/][JetBrains Mono]] font.
