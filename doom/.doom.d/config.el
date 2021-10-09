@@ -191,12 +191,35 @@
 ;;  (require 'org-roam-protocol)          ;
   )
 
+(setq org-roam-v2-ack t)
+
 ;; replace isearch with swiper
 (global-set-key (kbd "C-s") 'swiper)
 
-(setq org-roam-v2-ack t)
-;; (setq org-roam-list-files-commands nil)
-;;
+
+;; map C-h to delete-backward
+(global-set-key (kbd "C-h") 'evil-delete-backward-char-and-join)
+
+;; Java config
+(use-package lsp-java)
+(add-hook 'java-mode-hook #'lsp)
+(require 'meghanada)
+(add-hook 'java-mode-hook
+          (lambda ()
+            ;; meghanada-mode on
+            (meghanada-mode t)
+            (flycheck-mode +1)
+            (setq c-basic-offset 2)
+            ;; use code format
+            (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
+(cond
+   ((eq system-type 'windows-nt)
+    (setq meghanada-java-path (expand-file-name "bin/java.exe" (getenv "JAVA_HOME")))
+    (setq meghanada-maven-path "mvn.cmd"))
+   (t
+    (setq meghanada-java-path "java")
+    (setq meghanada-maven-path "mvn")))
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
