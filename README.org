@@ -1,6 +1,7 @@
 # .dotfiles
 
 * David's dotfiles
+Config files for Fish, iterm2, tmux, doom emacs, ideavimrc and more.
 ** Stow
 I use [[https://www.gnu.org/software/stow/][GNU Stow]] to manage my dotfiles
 
