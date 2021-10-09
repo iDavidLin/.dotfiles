@@ -22,7 +22,11 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;; (setq doom-font (font-spec :size 18 :weight 'semi-light))
+<<<<<<< HEAD
 (setq doom-font (font-spec :family "FiraCode" :size 18)) ;
+=======
+(setq doom-font (font-spec :family "JetBrains Mono" :size 16.0 :weight 'light :width 'normal)) ;
+>>>>>>> origin/main
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -150,6 +154,25 @@
                           (:discard (:tag ("Chore" "Routine" "Daily")))))))))))
 ;; Super agenda:1 ends here
 
+
+(use-package ivy
+  :diminish
+  :bind (("C-s" . swiper)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
+  :config
+  (ivy-mode 1))
+
 ;; org-roam
 (use-package org-roam
   :ensure t
@@ -162,16 +185,18 @@
          ("C-c n c" . org-roam-capture)
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
-;;  :config
-;;  (org-roam-db-autosync-mode)
+ ;; :config
+  ;; (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
 ;;  (require 'org-roam-protocol)          ;
   )
 
 ;; replace isearch with swiper
 (global-set-key (kbd "C-s") 'swiper)
-;; (setq org-roam-v2-ack t)
+
+(setq org-roam-v2-ack t)
 ;; (setq org-roam-list-files-commands nil)
+;;
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
