@@ -36,7 +36,7 @@
 (with-eval-after-load 'org (setq org-agenda-files
                                   '("~/Dropbox/org/gtd")))
 
-(setq org-journal-dir "~/Dropbox/org/journal/2020")
+(setq org-journal-dir "~/Dropbox/org/journal/2022")
 (setq org-journal-file-format "%Y-%m-%d")
 (setq org-journal-date-prefix "#+TITLE: ")
 (setq org-journal-date-format "%A, %B %d %Y")
