@@ -216,6 +216,29 @@
     (setq meghanada-java-path "java")
     (setq meghanada-maven-path "mvn")))
 
+;; org publish
+(require 'ox-publish)
+(setq org-publish-project-alist
+      '(
+        ("org-notes"
+         :base-directory "~/Documents/code/org-blog/org/"
+         :base-extension "org"
+         :publishing-directory "~/html/"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4             ; Just the default for this project.
+         :auto-preamble t
+         :html-preamble "<ul class=\"nav\"><li><a href=\"index.html\">home</a></li><li><a href=\"career.html\">career</a></li><li><a href=\"life.html\">life</a></li></ul>"
+         )
+        ("org-static"
+         :base-directory "~/Documents/code/org-blog/org/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/html/"
+         :recursive t
+         :publishing-function org-publish-attachment
+         )
+        ("org" :components ("org-notes" "org-static"))
+      ))
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
