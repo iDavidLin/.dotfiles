@@ -181,10 +181,6 @@
          ("C-c n c" . org-roam-capture)
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
- ;; :config
-  ;; (org-roam-db-autosync-mode)
-  ;; If using org-roam-protocol
-;;  (require 'org-roam-protocol)          ;
   )
 
 (setq org-roam-v2-ack t)
@@ -217,9 +213,18 @@
     (setq meghanada-maven-path "mvn")))
 
 ;; org publish
+(defvar org-blog-preamble
+  "<ul class=\"nav\">
+      <li class=\"nav-item\"><a href=\"/index.html\">home</a></li>
+      <li class=\"nav-item\"><a href=\"/computer-science/index.html\">computer science</a></li>
+      <li class=\"nav-item\"><a href=\"/life.html\">life</a></li>
+      <li class=\"nav-item\"><a href=\"/about.html\">about</a></li>
+   </ul>"
+)
+
 (require 'ox-publish)
 (setq org-publish-project-alist
-      '(
+      `(
         ("org-notes"
          :base-directory "~/blog"
          :base-extension "org"
@@ -228,7 +233,7 @@
          :publishing-function org-html-publish-to-html
          :headline-levels 4             ; Just the default for this project.
          :auto-preamble t
-         :html-preamble "<ul class=\"nav\"><li><a href=\"index.html\">home</a></li><li><a href=\"career.html\">career</a></li><li><a href=\"life.html\">life</a></li></ul>"
+         :html-preamble ,org-blog-preamble
          )
         ("org-static"
          :base-directory "~/blog"
