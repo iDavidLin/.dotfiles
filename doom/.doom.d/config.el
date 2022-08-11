@@ -212,6 +212,14 @@
     (setq meghanada-java-path "java")
     (setq meghanada-maven-path "mvn")))
 
+;; config set up frame size
+(set-frame-height
+ (selected-frame)
+ (/ (display-pixel-height) (frame-char-height)))
+(set-frame-width
+ (selected-frame)
+ (/ (/ (display-pixel-width) 2) (frame-char-width)))
+
 ;; org publish
 (defvar org-blog-preamble
   "<ul class=\"nav\">
