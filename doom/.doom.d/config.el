@@ -247,6 +247,7 @@
          :base-directory "~/blog"
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
          :publishing-directory "~/blog/html/"
+         :exclude "~/blog/html/"
          :recursive t
          :publishing-function org-publish-attachment
          )
