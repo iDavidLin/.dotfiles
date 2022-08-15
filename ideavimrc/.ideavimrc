@@ -7,6 +7,7 @@ set smartcase
 set showmode
 set history=1000
 set surround " activate the vim-surround key bindings"
+set clipboard=unnamed
 
 " Home row beginning / end of line
 noremap <C-a> ^
@@ -21,7 +22,10 @@ inoremap <C-a> <Esc>I
 
 " Leader o/O to insert line below/above
 nnoremap <Leader>o o<Esc>
-nnoremap <Leader>O O<Esc>
+nnoremap <Leader>O o<esc>
+
+" map C-g to exit
+inoremap <C-g> <Esc>
 
 " Reload .ideavimrc
 nnoremap <leader>vs :source ~/.ideavimrc<CR>
@@ -36,11 +40,23 @@ noremap <leader>fr :action RecentChangedFiles<CR>
 noremap <leader>pp :action ManageRecentProjects<CR>
 noremap <leader>pf :action GotoFile<CR>
 
+" Bookmarks
+noremap <leader>bi :action ToggleBookmark<CR>
+noremap <leader>bs :action ShowBookmarks<CR>
+
+" Debuging
+noremap <leader>bp :action ToggleLineBreakpoint<CR>
+noremap <leader>ee :action EvaluateExpression<CR>
+
 " Navigation
 nnoremap K :action GotoDeclaration<CR>
 nnoremap <leader>l :action GotoLine<CR>
 nnoremap <leader>jf :action FileStructurePopup<CR>
 nnoremap <leader>gt :action GotoTest<CR>
+
+" Use ctrl-c as an ide shortcut in normal and visual modes
+sethandler <C-J> n-v:ide i:vim
+sethandler <C-K> n-v:ide i:vim
 
 " Splitter and Navigate
 nnoremap <leader>wh :action SplitHorizontally<CR>
@@ -56,6 +72,8 @@ nnoremap <leader>ed :action ShowErrorDescription<CR>
 
 " debug
 nnoremap <leader>tb :action ToggleLineBreakpoint<CR>
+nnoremap <leader>cp :action CopyContentRootPath<CR>
+nnoremap <leader>ch :action CallHierarchy<CR>
 
 " Refactoring
 nnoremap <leader>fu :action FindUsages<CR>
@@ -66,3 +84,4 @@ nnoremap ; :action AceAction<CR>
 nnoremap <leader>fe :action Javascript.Linters.EsLint.Fix<CR>
 nnoremap <leader>te :action TsLintFileFixAction<CR>
 nnoremap <leader>rn :action RenameElement<CR>
+nnoremap <leader>rf :action RenameFile<CR>
