@@ -1,0 +1,16 @@
+#+title: Readme
+
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+* on-my-zsh Plugin
+** zsh-syntax-highlighting
+https://github.com/zsh-users/zsh-syntax-highlighting
+#+begin_src
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+#+end_src
+
+** zsh-autosuggestions
+https://github.com/zsh-users/zsh-autosuggestions
+#+begin_src
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+#+end_src

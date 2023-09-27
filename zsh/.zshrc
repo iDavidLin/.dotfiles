@@ -70,7 +70,8 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-        zsh-syntax-highlighting 
+  z
+  zsh-syntax-highlighting
 	zsh-autosuggestions
        	incr
        	sudo
